@@ -1,0 +1,14 @@
+{
+  "name": "gatoserver",
+  "version": "0.0.1",
+  "description": "Intro a servidores nodejs",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "sebsmerike",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
