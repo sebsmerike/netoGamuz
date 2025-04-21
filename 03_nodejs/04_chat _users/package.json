@@ -1,0 +1,14 @@
+{
+  "name": "03_websocket_server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "sebsmerike",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.1"
+  }
+}
