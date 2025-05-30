@@ -4,8 +4,7 @@ using UnityEngine.UIElements;
 
 public class playerMove : NetworkBehaviour
 {
-    float speed = 1.25f;
-    // public Material mat;
+    sceneScript scScript;
 
     public GameObject floating;
     public TextMesh txtName;
@@ -32,6 +31,11 @@ public class playerMove : NetworkBehaviour
         txtName.color = _new;
     }
 
+    public void Awake()
+    {
+        scScript = GameObject.FindFirstObjectByType<sceneScript>();
+    }
+
     public void Start()
     {
         //mat.color = Color.gray;
@@ -54,6 +58,8 @@ public class playerMove : NetworkBehaviour
     {
         //base.OnStartLocalPlayer();
 
+        scScript.plMove = this;
+
         Camera.main.transform.SetParent(transform);
         Camera.main.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -68,6 +74,15 @@ public class playerMove : NetworkBehaviour
     {
         playerName = newName;
         playerColor = newColor;
+
+        scScript.statusText = $"{playerName} joined.";
+    }
+
+    [Command]
+    public void CmdSendPlayerMessage()
+    {
+        if (scScript)
+            scScript.statusText = $"{playerName} clicked button {Random.Range(10, 99)}";
     }
 
     void Update()
