@@ -4,6 +4,7 @@ using UnityEngine;
 public class sceneScript : NetworkBehaviour
 {
     public TMPro.TextMeshProUGUI canvasStatusText;
+    public TMPro.TextMeshProUGUI canvasBulletsText;
     public playerMove plMove;
 
     [SyncVar(hook = nameof(OnStatusTextChanged))]
@@ -19,5 +20,10 @@ public class sceneScript : NetworkBehaviour
     {
         if (plMove != null)
             plMove.CmdSendPlayerMessage();
+    }
+
+    public void ammoUI (float _ammo)
+    {
+        canvasBulletsText.text = "Bullets left " + _ammo.ToString();
     }
 }
